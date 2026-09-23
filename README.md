@@ -6,7 +6,7 @@ A modular Python framework to programmatically query, filter, and analyze Apple 
 
 * **`data_loader.py`**: Central hub that handles API fetching from Polymarket's Gamma/CLOB endpoints, filters out irrelevant market cap bets, and returns a clean, structured Pandas DataFrame.
 * **`analyse_data.py`**: Performs macro-level market summaries, liquidity share calculations, and outputs top market rankings.
-* **`process_data.py`**: Handles granular market inspections, orderbook depth queries, and renders liquidity distribution histograms.
+* **`plot_markets.py`**: Allows data to be intutively visualllised.
 
 
 ### 1. Install Dependencies
