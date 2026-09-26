@@ -1,14 +1,28 @@
-# Polymarket AAPL Price Target Analysis Pipeline
+# Polymarket Future Stock Price Analysis
 
-A modular Python framework to programmatically query, filter, and analyze Apple (AAPL) prediction markets on Polymarket using a **Single Source of Truth** architecture.
+Gambling informed by others gambling. 
+
+A quantitative Python framework to pull prediction market odds from Polymarket API, derive smooth risk-neutral probability density functions (PDF), and visualize forward-looking price heatmaps alongside historical stock performance.
+
+---
+
+## Features
+
+- **Live Polymarket Ingestion**: Directly queries Polymarket's public API to retrieve live condition targets, prices, and pool liquidities.
+- **Natural Language Condition Parsing**: Regex-based extraction of target price bounds (`>` above, `<` below, `$X-$Y` range, and exact strike prices).
+- **Parametric (Normal Distribution)**: Fits a Normal CDF $(\mu, \sigma)$ via `scipy.optimize.minimize` (L-BFGS-B) to construct central bell-curve probability density functions.
+- **Liquidity-Weighted Density Mapping**: Scales probability intensity across time and price slices based on market pool liquidity ratios.
+- **Historical Stock Overlay**: Integrates `yfinance` to automatically overlay actual stock price histories up to the historical cutoff date.
+
+---
 
 ## Repository Structure
 
-* **`data_loader.py`**: Central hub that handles API fetching from Polymarket's Gamma/CLOB endpoints, filters out irrelevant market cap bets, and returns a clean, structured Pandas DataFrame.
-* **`analyse_data.py`**: Performs macro-level market summaries, liquidity share calculations, and outputs top market rankings.
-* **`plot_markets.py`**: Allows data to be intutively visualllised.
-
-
-### 1. Install Dependencies
-```bash
-pip install -r requirements.txt
+```text
+.
+├── data_loader.py          # Fetches, parses, and normalizes Polymarket prediction market data
+├── analyse_data.py         # Summarizes active market liquidity, volume metrics, and top pools
+├── plot_markets_smooth.py  # Parametric Normal CDF fitting and heatmap visualization
+├── plot_markets.py         # Non-parametric PCHIP interpolation heatmap visualization
+├── requirements.txt        # Python dependency specifications
+└── README.md               # Project documentation
