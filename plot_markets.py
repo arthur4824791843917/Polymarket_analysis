@@ -167,27 +167,27 @@ def plot_market_density(ticker="AAPL"):
         price_grid,
         density_matrix,
         cmap="turbo",
-        norm=PowerNorm(gamma=1, vmin=0, vmax=max_val),
+        norm=PowerNorm(gamma=1.5, vmin=0, vmax=max_val),
         shading="flat",
         alpha=0.9,
     )
 
-    fig.colorbar(mesh, ax=ax, label="Liquidity-Weighted Density Intensity")
+    fig.colorbar(mesh, ax=ax, label="Liquidity-Weighted Probability Density")
 
     if not stock_df.empty and "Close" in stock_df.columns:
         ax.plot(
             stock_df.index,
             stock_df["Close"],
-            color="black",
-            linewidth=2.5,
+            color="white",
+            linewidth=1,
             label=f"{ticker} True Stock Price",
             zorder=10,
         )
 
         ax.axvline(
             cutoff_date,
-            color="black",
-            linestyle="--",
+            color="white",
+            linestyle=":",
             linewidth=1.2,
             alpha=0.7,
             label="Historical Cutoff",
