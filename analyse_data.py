@@ -3,7 +3,7 @@ from data_loader import fetch_and_filter_markets
 
 def run_dataframe_analysis():
     # Receive pre-filtered data directly
-    df = fetch_and_filter_markets(query="AAPL", min_liquidity=1000.0)
+    df = fetch_and_filter_markets(query="AAPL", min_liquidity=100.0)
 
     if df.empty:
         print("No market data returned.")
