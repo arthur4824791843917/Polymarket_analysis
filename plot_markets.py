@@ -167,7 +167,7 @@ def plot_market_density(ticker="AAPL"):
         price_grid,
         density_matrix,
         cmap="turbo",
-        norm=PowerNorm(gamma=0.5, vmin=0, vmax=max_val),
+        norm=PowerNorm(gamma=1, vmin=0, vmax=max_val),
         shading="flat",
         alpha=0.9,
     )
